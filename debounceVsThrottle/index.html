@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Debounce Vs Throttle</title>
+  </head>
+  <body>
+    <main>
+      <section class="search-section">
+        <label for="search-input"
+          >Type to compare debounce, default, and throttle functions</label
+        >
+        <input
+          type="text"
+          name="search"
+          id="search-input"
+          placeholder="Search..."
+        />
+      </section>
+
+      <section id="result">
+        <div class="result-block">
+          <div class="flex">
+            <h3>Default</h3>
+            <span id="default-count">0</span>
+          </div>
+          <div class="flex default-container"></div>
+        </div>
+        <div class="result-block">
+          <div class="flex">
+            <h3>Debounced</h3>
+            <span id="debounce-count">0</span>
+          </div>
+          <div class="flex debounce-container"></div>
+        </div>
+        <div class="result-block">
+          <div class="flex">
+            <h3>Throttled</h3>
+            <span id="throttle-count">0</span>
+          </div>
+          <div class="flex throttle-container"></div>
+        </div>
+      </section>
+    </main>
+    <script src="/index.js"></script>
+  </body>
+</html>
