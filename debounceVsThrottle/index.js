@@ -1,15 +1,34 @@
+// Get DOM elements
 const input = document.getElementById("search-input");
 const result = document.getElementById("result");
-const oCount = result.querySelector("#default-count");
-const dCount = result.querySelector("#debounce-count");
-const tCount = result.querySelector("#throttle-count");
 
-let defaultCount = 0;
-let debouncedCount = 0;
-let throttledCount = 0;
+const counters = {
+  default: result.querySelector("#default-count"),
+  debounced: result.querySelector("#debounce-count"),
+  throttled: result.querySelector("#throttle-count"),
+};
 
-// Create Reactangle
+const containers = {
+  default: result.querySelector(".default-container"),
+  debounced: result.querySelector(".debounce-container"),
+  throttled: result.querySelector(".throttle-container"),
+};
 
+// Initila counts
+const counts = {
+  default: 0,
+  debounced: 0,
+  throttled: 0,
+};
+
+// Colors for boxes for a given type
+const colors = {
+  default: "#E76F51",
+  debounced: "#388E3C",
+  throttled: "#1976D2",
+};
+
+// Utility to create a Div element
 const createDivElement = (color) => {
   const div = document.createElement("div");
   div.classList.add("trigger-box");
@@ -17,38 +36,13 @@ const createDivElement = (color) => {
   return div;
 };
 
-const updateCount = (e, countType) => {
-  const value = e.target.value;
-  if (countType === "default") {
-    console.log(`default value ${value}`);
-    defaultCount++;
-    oCount.textContent = `${defaultCount}`;
+// Update the UI and count for a given type
+const updateUi = (countType) => {
+  counts[countType]++;
+  counters[countType].textContent = counts[countType];
 
-    // Add  div
-    const divContainer = result.querySelector(".default-container");
-    const div = createDivElement("red");
-    divContainer.appendChild(div);
-  }
-  if (countType === "debounced") {
-    console.log(`debounced value ${value}`);
-    debouncedCount++;
-    dCount.textContent = `${debouncedCount}`;
-
-    // Add  div
-    const divContainer = result.querySelector(".debounce-container");
-    const div = createDivElement("green");
-    divContainer.appendChild(div);
-  }
-  if (countType === "throttled") {
-    console.log(`throttled value ${value}`);
-    throttledCount++;
-    tCount.textContent = `${throttledCount}`;
-
-    // Add  div
-    const divContainer = result.querySelector(".throttle-container");
-    const div = createDivElement("purple");
-    divContainer.appendChild(div);
-  }
+  const div = createDivElement(colors[countType]);
+  containers[countType].appendChild(div);
 };
 
 // Debounced version
@@ -62,10 +56,9 @@ const debounce = (fn, delay) => {
     }, delay);
   };
 };
-const debounced = debounce(updateCount, 500);
+const debounced = debounce(updateUi, 500);
 
 // Throttled version
-
 const throttle = (fn, delay) => {
   let timeOutId = null;
   return function (...args) {
@@ -78,11 +71,11 @@ const throttle = (fn, delay) => {
     }, delay);
   };
 };
-const throttled = throttle(updateCount, 300);
+const throttled = throttle(updateUi, 300);
 
 // Add Event Listener
-input.addEventListener("keyup", (e) => {
-  updateCount(e, "default");
-  debounced(e, "debounced");
-  throttled(e, "throttled");
+input.addEventListener("keyup", () => {
+  updateUi("default");``
+  debounced("debounced");
+  throttled("throttled");
 });
