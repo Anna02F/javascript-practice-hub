@@ -1,9 +1,8 @@
 # JavaScript Practice Hub
 
-## Debounce vs Throttle
-
-
 Welcome to the **JS Practice Hub**, where I explore different JavaScript techniques and performance optimizations.
+
+## Debounce vs Throttle
 
 The **debounce and throttle** project explores how these two essential techniques can help optimize performance, particularly in scenarios where events (like typing, scrolling, or resizing) fire frequently.
 
