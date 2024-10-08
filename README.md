@@ -10,3 +10,5 @@ The **debounce and throttle** project explores how these two essential technique
 - **Throttle**: Ensures the function runs at most once within a specified time interval, even if the event keeps firing.
 
 This practice is all about learning how to improve performance and keep things smooth in your UI. Feel free to explore the code, experiment with the timing, and see how it works in action!
+
+![Debounce vs Throttle in action](https://github.com/user-attachments/assets/e6169ce4-f86c-4557-8116-c20c890d239d)
